@@ -10,7 +10,6 @@ import {
 } from "chart.js";
 import { Line } from "react-chartjs-2";
 import { options, data } from "../../lib/chartConfig";
-import { GetServerSideProps } from "next";
 
 ChartJS.register(
   CategoryScale,
@@ -22,7 +21,7 @@ ChartJS.register(
   Legend
 );
 
-const Deaths = () => {
+const Cases = () => {
   return (
     <div>
       {/* {country} */}
@@ -31,7 +30,7 @@ const Deaths = () => {
   );
 };
 
-export default Deaths;
+export default Cases;
 
 // export const getServerSideProps: GetServerSideProps = async ({ params }) => {
 //   const res = await fetch(`https://api.covid19api.com/total/country/${params}`);
