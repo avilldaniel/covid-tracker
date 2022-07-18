@@ -1,4 +1,3 @@
-import {} from "next";
 import { GetServerSideProps } from "next";
 import Deaths from "./charts/Deaths";
 import Cases from "./charts/Cases";

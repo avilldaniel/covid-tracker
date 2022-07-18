@@ -1,19 +1,31 @@
+import { useState } from "react";
 import { TextField, Autocomplete } from "@mui/material";
-import { SearchProps } from "../lib/interfaces";
+import { ISearchProps } from "../lib/interfaces";
 
-const Search = ({ countries }: SearchProps) => {
-  const countriesArr = countries.map((country) => {
-    return {
-      label: country.Country,
-    };
+const Search = ({ countries, setCountry, setCountryInfo }: ISearchProps) => {
+  const countryList = countries.map((country) => {
+    return `${country.Country}`;
   });
+
+  const fetchCountryInfo = async (country: string | null) => {
+    const res = await fetch(
+      `https://api.covid19api.com/total/country/${country}`
+    );
+    const info = await res.json();
+    setCountryInfo(info);
+  };
 
   return (
     <>
       <Autocomplete
+        // value={null} not needed since our setCountry pushes country back to index.tsx
+        onChange={(event: any, newValue: string | null) => {
+          setCountry(newValue);
+          fetchCountryInfo(newValue);
+        }}
         disablePortal
         id="country-select"
-        options={countriesArr}
+        options={countryList}
         sx={{ width: 300 }}
         renderInput={(params) => <TextField {...params} label="Country" />}
       />
