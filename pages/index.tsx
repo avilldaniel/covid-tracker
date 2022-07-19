@@ -2,7 +2,7 @@ import { useState } from "react";
 import { NextPage, GetStaticProps, InferGetStaticPropsType } from "next";
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
-import Content from "../components/Content";
+// import Content from "../components/Content";
 import { ICountries, ICountry, IRecentStats } from "../lib/interfaces";
 import Search from "../components/Search";
 
@@ -13,12 +13,6 @@ const Home: NextPage = ({
   const [countryInfo, setCountryInfo] = useState<IRecentStats[] | undefined>(
     undefined
   );
-  // console.log("countryInfo:", countryInfo?.length);
-  // const pastWeekStats = (countryInfo: ICountry[]) => {
-  //   for (let i = countryInfo?.length - 1; i >= countryInfo?.length - 7; i--) {
-  //     console.log("countryInfo[i]:", countryInfo[i]);
-  //   }
-  // };
 
   return (
     <div className={styles.container}>
@@ -31,8 +25,9 @@ const Home: NextPage = ({
         countries={countries}
         setCountry={setCountry}
         setCountryInfo={setCountryInfo}
+        country={country}
+        countryInfo={countryInfo}
       />
-      {country ? <Content /> : null}
     </div>
   );
 };

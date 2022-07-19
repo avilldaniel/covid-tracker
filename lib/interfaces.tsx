@@ -1,5 +1,10 @@
 import { Dispatch, SetStateAction } from "react";
 
+export interface IContentProps {
+  countryInfo: IRecentStats[] | undefined;
+  country: string | null;
+}
+
 export interface IRecentStats {
   Confirmed: number;
   Deaths: number;
@@ -13,6 +18,8 @@ export interface ISearchProps {
   countries: ICountries[];
   setCountry: Dispatch<SetStateAction<string | null>>;
   setCountryInfo: Dispatch<SetStateAction<IRecentStats[] | undefined>>;
+  country: string | null;
+  countryInfo: IRecentStats[] | undefined;
 }
 
 export interface ICountries {

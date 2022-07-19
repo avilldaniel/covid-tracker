@@ -1,12 +1,23 @@
 import { GetServerSideProps } from "next";
 import Deaths from "./charts/Deaths";
 import Cases from "./charts/Cases";
+import { IContentProps } from "../lib/interfaces";
 
-const Content = () => {
+const Content = ({ countryInfo, country }: IContentProps) => {
+  // console.log("in Content, countryInfo:", countryInfo);
   return (
     <div>
-      <Deaths />
-      <Cases />
+      {countryInfo ? (
+        <div>
+          <Deaths />
+          <Cases />
+        </div>
+      ) : (
+        <h3>
+          Unable to fetch data for {`${country}`}. <br /> Select a different
+          country.
+        </h3>
+      )}
     </div>
   );
 };
