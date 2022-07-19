@@ -1,6 +1,5 @@
-import { useState } from "react";
 import { TextField, Autocomplete } from "@mui/material";
-import { ISearchProps } from "../lib/interfaces";
+import { ISearchProps, ICountry, IRecentStats } from "../lib/interfaces";
 
 const Search = ({ countries, setCountry, setCountryInfo }: ISearchProps) => {
   const countryList = countries.map((country) => {
@@ -11,8 +10,25 @@ const Search = ({ countries, setCountry, setCountryInfo }: ISearchProps) => {
     const res = await fetch(
       `https://api.covid19api.com/total/country/${country}`
     );
-    const info = await res.json();
-    setCountryInfo(info);
+    const countryData = await res.json();
+    const recentStats = pastWeekStats(countryData);
+
+    setCountryInfo(recentStats);
+  };
+
+  const pastWeekStats = (
+    countryInfo: ICountry[]
+  ): IRecentStats[] | undefined => {
+    const statsArr: IRecentStats[] | undefined = [];
+    for (let i = countryInfo?.length - 1; i >= countryInfo?.length - 7; i--) {
+      console.log("countryInfo[i]:", countryInfo[i]);
+      statsArr.push({
+        Confirmed: countryInfo[i].Confirmed,
+        Deaths: countryInfo[i].Deaths,
+      });
+    }
+    console.log("total pastWeekStats:", statsArr);
+    return statsArr;
   };
 
   return (

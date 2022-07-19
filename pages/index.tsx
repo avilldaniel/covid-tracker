@@ -3,16 +3,22 @@ import { NextPage, GetStaticProps, InferGetStaticPropsType } from "next";
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import Content from "../components/Content";
-import { ICountries, ICountry } from "../lib/interfaces";
+import { ICountries, ICountry, IRecentStats } from "../lib/interfaces";
 import Search from "../components/Search";
 
 const Home: NextPage = ({
   countries,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   const [country, setCountry] = useState<string | null>(null);
-  const [countryInfo, setCountryInfo] = useState<ICountry | undefined>(
+  const [countryInfo, setCountryInfo] = useState<IRecentStats[] | undefined>(
     undefined
   );
+  // console.log("countryInfo:", countryInfo?.length);
+  // const pastWeekStats = (countryInfo: ICountry[]) => {
+  //   for (let i = countryInfo?.length - 1; i >= countryInfo?.length - 7; i--) {
+  //     console.log("countryInfo[i]:", countryInfo[i]);
+  //   }
+  // };
 
   return (
     <div className={styles.container}>
