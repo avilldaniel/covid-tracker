@@ -1,5 +1,25 @@
 import { Dispatch, SetStateAction } from "react";
 
+export interface IDeathsProps {
+  country: string | null;
+  countryInfo: IRecentStats[] | undefined;
+}
+
+export interface ICasesProps {
+  country: string | null;
+  countryInfo: IRecentStats[] | undefined;
+}
+
+export interface ICasesData {
+  label: string;
+  cases: number;
+}
+
+export interface IDeathsData {
+  label: string;
+  deaths: number;
+}
+
 export interface IContentProps {
   countryInfo: IRecentStats[] | undefined;
   country: string | null;

@@ -1,6 +1,6 @@
 import { faker } from "@faker-js/faker";
 
-export const options = {
+export const templateOptions = {
   responsive: true,
   plugins: {
     legend: {
@@ -9,7 +9,7 @@ export const options = {
     },
     title: {
       display: true,
-      text: "Total deaths in the past week",
+      text: "Total <stats> in the past week",
       // position: "bottom",
       padding: 20,
       font: { size: 18 },
@@ -27,11 +27,12 @@ const labels = [
   "Saturday",
 ];
 
-export const data = {
+export const templateData = {
+  // templateLabels,
   labels,
   datasets: [
     {
-      label: "Deaths",
+      label: "<Label>",
       data: labels.map(() => faker.datatype.number({ min: -1000, max: 1000 })),
       borderColor: "rgb(255, 99, 132)",
       backgroundColor: "rgba(255, 99, 132, 0.5)",

@@ -4,13 +4,21 @@ import Cases from "./charts/Cases";
 import { IContentProps } from "../lib/interfaces";
 
 const Content = ({ countryInfo, country }: IContentProps) => {
-  // console.log("in Content, countryInfo:", countryInfo);
+  console.log(`${country}'s`, "countryInfo:", countryInfo);
   return (
     <div>
       {countryInfo ? (
         <div>
-          <Deaths />
-          <Cases />
+          <Deaths country={country} countryInfo={countryInfo} />
+          <Cases country={country} countryInfo={countryInfo} />
+          <h2>
+            Total Cases confirmed{" "}
+            {countryInfo[countryInfo.length - 1].Confirmed.toLocaleString()}
+          </h2>
+          <p>
+            Data collected from the{" "}
+            <a href="https://covid19api.com/">COVID-19 API</a>
+          </p>
         </div>
       ) : (
         <h3>

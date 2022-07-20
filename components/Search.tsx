@@ -61,7 +61,10 @@ const Search = ({
         renderInput={(params) => <TextField {...params} label="Country" />}
       />
 
-      {dataLoaded && <Content countryInfo={countryInfo} country={country} />}
+      {dataLoaded && country && (
+        <Content countryInfo={countryInfo} country={country} />
+      )}
+      {/* {dataLoaded && <Content countryInfo={countryInfo} country={country} />} */}
     </>
   );
 };

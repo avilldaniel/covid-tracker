@@ -9,7 +9,8 @@ import {
   Legend,
 } from "chart.js";
 import { Line } from "react-chartjs-2";
-import { options, data } from "../../lib/chartConfig";
+import { templateOptions, templateData } from "../../lib/chartConfig";
+import { ICasesProps, ICasesData } from "../../lib/interfaces";
 
 ChartJS.register(
   CategoryScale,
@@ -21,21 +22,57 @@ ChartJS.register(
   Legend
 );
 
-const Cases = () => {
+const Cases = ({ country, countryInfo }: ICasesProps) => {
+  // overwrite chart options configuration
+  const range: number[] | undefined = countryInfo?.map(
+    (country) => country.Confirmed ?? 0
+  );
+  const casesOptions = {
+    ...templateOptions,
+    scales: {
+      y: {
+        suggestedMin: range ? Math.min(...range) - 1000 : 0,
+        suggestedMax: range ? Math.max(...range) + 1000 : 0,
+      },
+    },
+    plugins: {
+      ...templateOptions.plugins,
+      title: {
+        ...templateOptions.plugins.title,
+        text: "Total cases",
+      },
+    },
+  };
+  const labels: string[] = [];
+  const casesLabels: ICasesData[] = [];
+  for (let i = 6; i >= 0; i--) {
+    const day = new Date();
+    day.setDate(day.getDate() - (i + 1));
+    labels.push(day.toLocaleDateString());
+    casesLabels.push({
+      label: `${day}`,
+      cases: countryInfo ? countryInfo[i].Confirmed : 0,
+    });
+  }
+  // console.log("casesLabels[]:", casesLabels);
+  const casesData = {
+    labels,
+    datasets: [
+      {
+        ...templateData.datasets[0],
+        label: "Cases",
+        data: casesLabels.map((label) => label.cases),
+      },
+    ],
+  };
+  // console.log("casesOptions:", casesOptions);
+  // console.log("casesOptions:", casesOptions);
+  // console.log("templateData:", templateData);
   return (
     <div>
-      {/* {country} */}
-      <Line options={options} data={data} />
+      <Line options={casesOptions} data={casesData} />
     </div>
   );
 };
 
 export default Cases;
-
-// export const getServerSideProps: GetServerSideProps = async ({ params }) => {
-//   const res = await fetch(`https://api.covid19api.com/total/country/${params}`);
-//   const data = await res.json();
-//   return {
-//     props: data,
-//   };
-// };
