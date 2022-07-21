@@ -10,7 +10,7 @@ import {
 } from "chart.js";
 import { Line } from "react-chartjs-2";
 import { templateOptions, templateData } from "../../lib/chartConfig";
-import { ICasesProps, ICasesData } from "../../lib/interfaces";
+import { IChartsProps, IChartsData } from "../../lib/interfaces";
 
 ChartJS.register(
   CategoryScale,
@@ -22,7 +22,7 @@ ChartJS.register(
   Legend
 );
 
-const Cases = ({ country, countryInfo }: ICasesProps) => {
+const Cases = ({ country, countryInfo }: IChartsProps) => {
   // overwrite chart options configuration
   const range: number[] | undefined = countryInfo?.map(
     (country) => country.Confirmed ?? 0
@@ -44,7 +44,7 @@ const Cases = ({ country, countryInfo }: ICasesProps) => {
     },
   };
   const labels: string[] = [];
-  const casesLabels: ICasesData[] = [];
+  const casesLabels: IChartsData[] = [];
   for (let i = 6; i >= 0; i--) {
     const day = new Date();
     day.setDate(day.getDate() - (i + 1));

@@ -1,23 +1,14 @@
 import { Dispatch, SetStateAction } from "react";
 
-export interface IDeathsProps {
+export interface IChartsProps {
   country: string | null;
   countryInfo: IRecentStats[] | undefined;
 }
 
-export interface ICasesProps {
-  country: string | null;
-  countryInfo: IRecentStats[] | undefined;
-}
-
-export interface ICasesData {
+export interface IChartsData {
   label: string;
-  cases: number;
-}
-
-export interface IDeathsData {
-  label: string;
-  deaths: number;
+  cases?: number;
+  deaths?: number;
 }
 
 export interface IContentProps {
@@ -61,4 +52,10 @@ export interface ICountry {
   Recovered: number;
   Active: number;
   Date: Date;
+}
+
+export interface IMetaProps {
+  keywords: string;
+  description: string;
+  title: string;
 }

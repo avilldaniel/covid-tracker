@@ -49,7 +49,7 @@ const Search = ({
   return (
     <>
       <Autocomplete
-        // value={null} not needed since our setCountry pushes country back to index.tsx
+        // value={value} not needed since our setCountry pushes country back to index.tsx
         onChange={(event: any, newValue: string | null) => {
           setCountry(newValue);
           fetchCountryInfo(newValue);

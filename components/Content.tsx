@@ -1,4 +1,3 @@
-import { GetServerSideProps } from "next";
 import Deaths from "./charts/Deaths";
 import Cases from "./charts/Cases";
 import { IContentProps } from "../lib/interfaces";
@@ -27,11 +26,3 @@ const Content = ({ countryInfo, country }: IContentProps) => {
 };
 
 export default Content;
-
-export const getServerSideProps: GetServerSideProps = async ({ params }) => {
-  const res = await fetch(`https://api.covid19api.com/total/country/${params}`);
-  const day = await res.json(); // day = [day1 stats, day2 stats, ...]
-  return {
-    props: day,
-  };
-};
