@@ -62,6 +62,7 @@ const Deaths = ({ country, countryInfo }: IDeathsProps) => {
         ...templateData.datasets[0],
         label: "Deaths",
         data: deathsLabels.map((label) => label.deaths),
+        borderColor: "rgb(255, 99, 132)",
       },
     ],
   };
@@ -69,7 +70,7 @@ const Deaths = ({ country, countryInfo }: IDeathsProps) => {
   // console.log("deathsData:", deathsData);
   // console.log("templateData:", templateData);
   return (
-    <div>
+    <div className="chart">
       <Line options={deathsOptions} data={deathsData} />
     </div>
   );

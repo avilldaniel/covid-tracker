@@ -1,7 +1,16 @@
 import { faker } from "@faker-js/faker";
 
+const labels: string[] = [];
+for (let i = 6; i >= 0; i--) {
+  const day = new Date();
+  day.setDate(day.getDate() - (i + 1));
+  labels.push(day.toLocaleDateString());
+}
+
 export const templateOptions = {
+  interaction: { intersect: false },
   responsive: true,
+  maintainAspectRatio: false,
   plugins: {
     legend: {
       position: "top" as const,
@@ -10,22 +19,11 @@ export const templateOptions = {
     title: {
       display: true,
       text: "Total <stats> in the past week",
-      // position: "bottom",
-      padding: 20,
+      padding: 10,
       font: { size: 18 },
     },
   },
 };
-
-const labels = [
-  "Sunday",
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday",
-];
 
 export const templateData = {
   // templateLabels,
@@ -34,14 +32,8 @@ export const templateData = {
     {
       label: "<Label>",
       data: labels.map(() => faker.datatype.number({ min: -1000, max: 1000 })),
-      borderColor: "rgb(255, 99, 132)",
+      // borderColor: "rgb(255, 99, 132)",
       backgroundColor: "rgba(255, 99, 132, 0.5)",
     },
-    // {
-    //   label: "Dataset 2",
-    //   data: labels.map(() => faker.datatype.number({ min: -1000, max: 1000 })),
-    //   borderColor: "rgb(53, 162, 235)",
-    //   backgroundColor: "rgba(53, 162, 235, 0.5)",
-    // },
   ],
 };

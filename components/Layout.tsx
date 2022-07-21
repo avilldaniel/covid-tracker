@@ -1,9 +1,9 @@
 import Head from "next/head";
-import { LayoutProps } from "../lib/interfaces";
+import { ILayoutProps } from "../lib/interfaces";
 import Search from "./Search";
 import { GetStaticProps } from "next";
 
-const Layout = ({ children }: LayoutProps) => {
+const Layout = ({ children }: ILayoutProps) => {
   return (
     <div>
       <Head>

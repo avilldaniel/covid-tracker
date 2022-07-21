@@ -62,9 +62,14 @@ const Search = ({
       />
 
       {dataLoaded && country && (
-        <Content countryInfo={countryInfo} country={country} />
+        <div>
+          <Content countryInfo={countryInfo} country={country} />
+          <p className="collected">
+            Data collected from the{" "}
+            <a href="https://covid19api.com/">COVID-19 API</a>
+          </p>
+        </div>
       )}
-      {/* {dataLoaded && <Content countryInfo={countryInfo} country={country} />} */}
     </>
   );
 };

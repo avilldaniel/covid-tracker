@@ -62,6 +62,7 @@ const Cases = ({ country, countryInfo }: ICasesProps) => {
         ...templateData.datasets[0],
         label: "Cases",
         data: casesLabels.map((label) => label.cases),
+        borderColor: "rgb(65, 105, 225)",
       },
     ],
   };
@@ -69,7 +70,7 @@ const Cases = ({ country, countryInfo }: ICasesProps) => {
   // console.log("casesOptions:", casesOptions);
   // console.log("templateData:", templateData);
   return (
-    <div>
+    <div className="chart">
       <Line options={casesOptions} data={casesData} />
     </div>
   );

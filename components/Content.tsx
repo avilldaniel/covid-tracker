@@ -4,26 +4,22 @@ import Cases from "./charts/Cases";
 import { IContentProps } from "../lib/interfaces";
 
 const Content = ({ countryInfo, country }: IContentProps) => {
-  console.log(`${country}'s`, "countryInfo:", countryInfo);
+  // console.log(`${country}'s`, "countryInfo:", countryInfo);
   return (
-    <div>
+    <div className="container">
       {countryInfo ? (
-        <div>
+        <div className="content">
           <Deaths country={country} countryInfo={countryInfo} />
           <Cases country={country} countryInfo={countryInfo} />
-          <h2>
-            Total Cases confirmed{" "}
+          <h2 className="grid-col-span-2 total">
+            Total Cases confirmed:{" "}
             {countryInfo[countryInfo.length - 1].Confirmed.toLocaleString()}
           </h2>
-          <p>
-            Data collected from the{" "}
-            <a href="https://covid19api.com/">COVID-19 API</a>
-          </p>
         </div>
       ) : (
-        <h3>
-          Unable to fetch data for {`${country}`}. <br /> Select a different
-          country.
+        <h3 className="unable">
+          Unable to fetch data for {`${country}`}. <br /> Please select a
+          different country.
         </h3>
       )}
     </div>
