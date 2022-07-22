@@ -1,34 +1,50 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 🌎 COVID-19 Tracker
 
-## Getting Started
+## 📝 Overview
 
-First, run the development server:
+The COVID-19 Tracker pulls recent data from the COVID pandemic and its impact on countries. Simply type a country into the input form and view the results!
+
+*Note: Data from some countries are inaccessible; therefore, app will prompt user to select another country. I should have implemented a way to only render available countries within my Autocomplete text form.*
+
+🖇 [COVID-19 Tracker](https://a-covid-tracker.vercel.app/)
+
+![covid-tracker-demo](https://user-images.githubusercontent.com/90011911/180334011-347a6b15-23eb-47ab-b855-0909251f7890.gif)
+
+## ⌨️ Tech
+
+- [Next.js](https://nextjs.org/) + [TypeScript](https://www.typescriptlang.org/)
+- [COVID-19 API](https://covid19api.com/)
+- [Faker.js](https://fakerjs.dev/) - to test chart rendering
+- [Vercel](https://vercel.com/) - application deployment
+- [Chart.js](https://www.chartjs.org/) - Line Chart
+- [Material UI](https://mui.com/) - Text field & AutoComplete
+- Vanilla CSS
+
+## ✍️ Development Setup
 
 ```bash
+# Clone repo
+git clone https://github.com/avilldaniel/nextjs-tech-news.git
+
+# Install dependencies
+npm install
+
+# Initiate server and visit `http://localhost:3000/`
 npm run dev
-# or
-yarn dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## ⚙️ Meta
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+Daniel Villegas - [avilldaniel@gmail.com](avilldaniel@gmail.com)
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+Distributed under the MIT License. See `MIT License` for more information.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+https://github.com/avilldaniel/covid-tracker
 
-## Learn More
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## 🛠 Contributing
+1. Fork this repo
+2. Create your feature branch `git checkout -b <branch_name>`
+3. Commit your changes `git commit -am "<commit_message>"`
+4. Push to the branch `git push origin <project_name>/<location>`
+5. Create a new Pull Request
